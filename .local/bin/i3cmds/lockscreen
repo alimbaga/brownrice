@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+mpc pause
+pauseallmpv
+i3lock-fancy
+xset dpms force off

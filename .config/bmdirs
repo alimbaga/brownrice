@@ -3,8 +3,7 @@ h	~/
 d	~/Documents
 D	~/Downloads
 m	~/Music
-pp	~/Pictures
-vv	~/Videos
 cf	~/.config
 sc	~/.local/bin
-mn	/mnt
+log ~/.logs
+

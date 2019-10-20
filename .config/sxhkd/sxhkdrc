@@ -40,7 +40,7 @@ super + shift + x
 super + shift + BackSpace
 	prompt "Reboot computer?" "sudo -A shutdown -r now"
 super + x
-	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+	sh ~/.local/bin/i3cmds/lockscreen
 XF86Launch1
 	xset dpms force off
 XF86AudioMute
@@ -74,7 +74,7 @@ XF86MonBrightnessUp
 # Recording
 # Take screenshot
 Print
-	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+	maim ~/Images/scrnshot/pic-full-$(date '+%y%m%d-%H%M-%S').png
 # Pick screenshot type
 shift + Print
 	maimpick
@@ -110,7 +110,9 @@ super + {_,shift +} bracketleft
 # Function keys
 # Show readme
 super + F1
-	groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
+#groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
+	sh ~/.local/bin/i3cmds/dmenupass
+
 # F2 is restart in i3 right now.
 # Change display
 super + F3

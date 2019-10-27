@@ -66,6 +66,9 @@ Plug 'mattn/emmet-vim'
 " Asychronous autocompletion
 Plug 'dense-analysis/ale'
 
+" Git commands
+Plug 'tpope/vim-fugitive'
+
 " Languages and file types.
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
@@ -363,3 +366,4 @@ autocmd FileType json set textwidth=78 shiftwidth=2
 autocmd FileType json set softtabstop=2 tabstop=8
 autocmd FileType json set expandtab
 autocmd FileType json set foldmethod=syntax
+

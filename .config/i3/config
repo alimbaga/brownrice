@@ -197,3 +197,6 @@ bindsym $mod+Shift+Right 	move right
 
 # #---Enable autolock---# #
 exec --no-startup-id xss-lock -- ~/.local/bin/i3cmds/lockscreen
+
+# #---Enable docking daemon---# #
+exec --no-startup-id dockd --daemon

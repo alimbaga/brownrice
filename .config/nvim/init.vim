@@ -180,7 +180,6 @@ noremap <C-l> <C-w>l
 
 " Autoclose parenthesis and such
 inoremap " ""<left>
-inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>

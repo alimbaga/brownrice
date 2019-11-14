@@ -6,4 +6,6 @@ m	~/Music
 cf	~/.config
 sc	~/.local/bin
 log ~/.logs
+nwc1 ~/notes/ComputerNetworking/Chapter1
+
 

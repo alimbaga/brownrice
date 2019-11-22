@@ -36,3 +36,6 @@ echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc
 
 # Switch escape and caps if tty:
 sudo -n loadkeys ~/.local/bin/ttymaps.kmap 2>/dev/null
+
+# start redshift for
+redshift -l "51.05011:-114.08529"

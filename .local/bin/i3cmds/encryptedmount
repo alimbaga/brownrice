@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+# Gives demenu prompt to mount encrypted drives
+
+opencrypt() { \
+
+  passwd=dpass
+}
+
+mountcrypt(){ \
+}
+
+disks="$(lsblk -rpo "name,type,size,mountpoint" | awk '$3=="disk"&&$4==""{printf "%s (%s)\n",$1,$3}')
+
+# choose disk
+
+# prompt user to enter the drive name to be mapped to
+
+# Prompt user to enter password until they get it right or the quit
+
+# mount the thing
+
+

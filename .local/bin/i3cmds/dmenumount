@@ -41,6 +41,16 @@ asktype() { \
 	esac
 	}
 
+askencrypted() { \
+	case $(printf "Uncrypted\\nEncrypted" | dmenu -i -p "Mount an Uncrypted or Encrypted device?") in
+		Encrypted) encryptedmount && exit;;
+		Uncrypted) return 0;;
+		*) return 1;;
+	esac
+}
+
+askencrypted || exit
+
 anddrives=$(simple-mtpfs -l 2>/dev/null)
 usbdrives="$(lsblk -rpo "name,type,size,mountpoint" | awk '$2=="part"&&$4==""{printf "%s (%s)\n",$1,$3}')"
 

@@ -21,8 +21,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Auto complete on crack
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Auto complete just like vscode
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Surround text with qoutes, parethesis, brackets, and more
 Plug 'tpope/vim-surround'
@@ -138,6 +138,8 @@ set wildmode=full
 set wrap
 set timeoutlen=500
 
+
+
 nnoremap c "_c
 set nocompatible
 filetype plugin on
@@ -177,6 +179,9 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+
+" Zoom in on a pane
+noremap <C-z> <C-w>m
 
 " Autoclose parenthesis and such
 inoremap " ""<left>
@@ -343,10 +348,6 @@ noremap <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 noremap <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" deoplete autocomplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
 " vim latex live preview
 let g:livepreview_previewer = 'zathura'
 
@@ -366,3 +367,34 @@ autocmd FileType json set softtabstop=2 tabstop=8
 autocmd FileType json set expandtab
 autocmd FileType json set foldmethod=syntax
 
+" Neoclide (begin)
+
+" some servers have issues with backup files
+set nobackup
+set nowritebackup
+
+" Better display messages
+set cmdheight=2
+
+set updatetime=300
+
+set shortmess+=c
+
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Neoclide (end)
+
+" Airline configs

@@ -31,10 +31,9 @@ alias ka="killall" \
 	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
 	lsp="pacman -Qett --color=always | less" \
 	ffmpeg="ffmpeg -hide_banner" \
-	passpush="pass git add . && pass git commit -m "New account" && pass git push" \
 	vpn='nordvpn' \
 	pdf='zathura' \
-	topydo='cd ~/notes/todotxt/ && topydo' \
+	topydo='cd ~/Documents/notes/todotxt/ && topydo' \
 	todo='cd ~/notes/todotxt/ && topydo'
 
 

@@ -21,8 +21,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Auto complete just like vscode
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Async autocomplete
+Plug 'Shougo/deoplete.nvim'
 
 " Surround text with qoutes, parethesis, brackets, and more
 Plug 'tpope/vim-surround'
@@ -63,12 +63,17 @@ Plug 'kovetskiy/sxhkd-vim'
 " HTML expanding abbreviations
 Plug 'mattn/emmet-vim'
 
-" Asychronous autocompletion
+" Asychronous linting
 Plug 'dense-analysis/ale'
 
 " Git commands
 Plug 'tpope/vim-fugitive'
 
+" Snippets and such
+Plug 'sirver/ultisnips'
+
+" Assuming fzf is already installed
+Plug 'junegunn/fzf.vim'
 " Languages and file types.
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
@@ -137,7 +142,6 @@ set wildmenu
 set wildmode=full
 set wrap
 set timeoutlen=500
-
 
 
 nnoremap c "_c
@@ -215,9 +219,6 @@ noremap <leader>p :!opout <c-r>%<CR><CR>
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 autocmd VimLeave *.tex !texclear %
 
-" Ensure files are read as what I want:
-let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
@@ -367,34 +368,12 @@ autocmd FileType json set softtabstop=2 tabstop=8
 autocmd FileType json set expandtab
 autocmd FileType json set foldmethod=syntax
 
-" Neoclide (begin)
+" Airline config
 
-" some servers have issues with backup files
-set nobackup
-set nowritebackup
-
-" Better display messages
-set cmdheight=2
-
-set updatetime=300
-
-set shortmess+=c
-
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Neoclide (end)
-
-" Airline configs
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+" unicode symbols
+let g:airline_symbols.branch = ''
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'

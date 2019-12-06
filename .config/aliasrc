@@ -33,6 +33,7 @@ alias ka="killall" \
 	ffmpeg="ffmpeg -hide_banner" \
 	vpn='nordvpn' \
 	pdf='zathura' \
+	i3lock="i3lock && echo mem > /sys/power/state" \
 	topydo='cd ~/Documents/notes/todotxt/ && topydo' \
 	todo='cd ~/notes/todotxt/ && topydo'
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 mpc pause
 pauseallmpv
-i3lock-fancy
+i3lock --no-unlock-indicator --fuzzy --once --ignore-empty-password & echo mem > /sys/power/state
 xset dpms force off

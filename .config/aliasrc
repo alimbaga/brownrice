@@ -8,17 +8,13 @@ alias ka="killall" \
 	mkd="mkdir -pv" \
 	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
 	calcurse="calcurse -D ~/.config/calcurse" \
-	magit="nvim -c MagitOnly" \
 	p="sudo pacman" \
 	SS="sudo systemctl" \
 	f="$FILE" \
-	g="git" \
 	trem="transmission-remote" \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	x="sxiv -ft *" \
-	sdn="sudo shutdown -h now" \
-	gua="git remote | xargs -L1 git push --all" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	ll="ls -lahN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
@@ -33,9 +29,8 @@ alias ka="killall" \
 	ffmpeg="ffmpeg -hide_banner" \
 	vpn='nordvpn' \
 	pdf='zathura' \
-	i3lock="i3lock && echo mem > /sys/power/state" \
 	topydo='cd ~/Documents/notes/todotxt/ && topydo' \
-	todo='cd ~/notes/todotxt/ && topydo'
+	todo='cd ~/Documents/notes/todotxt/ && topydo'
 
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.

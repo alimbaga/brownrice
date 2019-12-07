@@ -143,7 +143,6 @@ set wildmode=full
 set wrap
 set timeoutlen=500
 
-
 nnoremap c "_c
 set nocompatible
 filetype plugin on
@@ -178,6 +177,19 @@ xnoremap <Leader>rc :s///gc<Left><Left><Left>
 " Clear search highlights.
 map <Leader>cs :let @/=''<CR>
 
+" Open a new empty buffer (replaces :tabnew)
+nmap <leader>N :enew<cr>
+
+" Buffer navigation
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
 " Shortcutting split navigation, saving a keypress:
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -192,6 +204,7 @@ inoremap " ""<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
+
 
 " Prevent x from overriding what's in the clipboard.
 noremap x "_x
@@ -370,6 +383,26 @@ autocmd FileType json set foldmethod=syntax
 
 " Airline config
 
+"enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#show_tab_count = 1
+
+" Gotta be quick about changing buffers"
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ":t"
+
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -377,3 +410,25 @@ endif
 let g:airline_symbols.branch = ''
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.linenr = '␊'
+
+" enable/disable ale integration
+let g:airline#extensions#ale#enabled = 1
+
+" ale error_symbol
+let airline#extensions#ale#error_symbol = 'E:'
+
+" ale warning
+let airline#extensions#ale#warning_symbol = 'W:'
+
+"ale show_line_numbers
+let airline#extensions#ale#show_line_numbers = 1
+
+" ale open_lnum_symbol
+let airline#extensions#ale#open_lnum_symbol = '(L'
+
+"ale close_lnum_symbol
+let airline#extensions#ale#close_lnum_symbol = ')'
+
+" Giting it done
+let g:airline#extensions#branch#empty_message = 'nihil'

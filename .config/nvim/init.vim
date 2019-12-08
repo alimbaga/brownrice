@@ -182,9 +182,6 @@ nmap <leader>h :bprevious<CR>
 " Close the current buffer and move to the previous one
 nmap <leader>bq :bp <BAR> bd #<CR>
 
-" Show all open buffers and their status
-nmap <leader>bl :ls<CR>
-
 " Shortcutting split navigation, saving a keypress:
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -367,9 +364,7 @@ let g:airline#extensions#branch#empty_message = 'nihil'
 
 "=#=#=#=#= Ultisnips =#=#=#=#="
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<leader>"
-let g:UltiSnipsJumpForwardTrigger="<leader><leader>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<C-f>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"

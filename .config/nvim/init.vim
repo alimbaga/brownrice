@@ -69,6 +69,8 @@ Plug 'sirver/ultisnips'
 " Assuming fzf is already installed
 Plug 'junegunn/fzf.vim'
 
+" necessary LaTEX plugin
+Plug 'lervag/vimtex'
 " Languages and file types.
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
@@ -365,9 +367,13 @@ let g:airline#extensions#branch#empty_message = 'nihil'
 "=#=#=#=#= Ultisnips =#=#=#=#="
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<C-f>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsJumpForwardTrigger="<tab><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<tab>b"
 
 " Edit ultisnip file for
 noremap <leader>es :UltiSnipsEdit<CR>
+
+"=#=#=#=#= VIMLaTEX =#=#=#=#="
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0

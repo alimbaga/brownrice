@@ -9,7 +9,7 @@
 
 " -----------------------------------------------------------------------------
 " Plugins
-" -----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
 
 " If not yet installed install vim plugin manager plug
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
@@ -255,8 +255,21 @@ noremap <leader><leader> <Esc>/<++><Enter>"_c4l
 " Save file as sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" LaTE word count:
+" LaTEX word count:
 autocmd FileType tex map <leader>w :w !detex \| wc -w<CR>
+
+" vim latex live preview
+let g:livepreview_previewer = 'zathura'
+
+" Saving for the worst
+set backup
+set swapfile
+set backupdir=~/.local/share/nvim/backup//
+set directory=~/.local/share/nvim/swap//
+if has('persistent_undo')
+	set undofile
+	set undodir=~/.local/share/nvim/undo//
+endif
 
 " -----------------------------------------------------------------------------
 " Plugin settings, mappings, autocommands, and configs
@@ -264,6 +277,11 @@ autocmd FileType tex map <leader>w :w !detex \| wc -w<CR>
 
 "=#=#=#=#= Deoplete =#=#=#=#="
 let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <Tab>
+    \ pumvisible() ? "\<C-n>" : deoplete#manual_complete()
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Goyo plugin makes text more readable when writing prose:
 noremap <leader>f :Goyo \| set bg=light \| set linebreak<CR>
@@ -271,16 +289,13 @@ noremap <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 "=#=#=#=#= NERDTree =#=#=#=#="
 noremap <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" vim latex live preview
-let g:livepreview_previewer = 'zathura'
+let g:NERDTreeShowHidden=1
+let g:NERDTreeAutoDeleteBuffer=1
 
 "=#=#=#=#= FZF =#=#=#=#="
 noremap <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" vim latex live preview
-let g:livepreview_previewer = 'zathura'
+let NERDTreeShowHidden=1
 
 "=#=#=#=#= FZF =#=#=#=#="
 nnoremap <silent> <C-p> :FZF -m<CR>
@@ -352,11 +367,12 @@ let g:airline#extensions#branch#empty_message = 'nihil'
 
 "=#=#=#=#= Ultisnips =#=#=#=#="
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsExpandTrigger="<leader>"
+let g:UltiSnipsJumpForwardTrigger="<leader><leader>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" deoplete integration with ultisnips
+" Edit ultisnip file for
+noremap <leader>es :UltiSnipsEdit<CR>

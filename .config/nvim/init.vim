@@ -263,8 +263,8 @@ let g:livepreview_previewer = 'zathura'
 " Saving for the worst
 set backup
 set swapfile
-set backupdir=~/.local/share/nvim/backup//
-set directory=~/.local/share/nvim/swap//
+set backupdir=./.backup,~/.local/share/nvim/backup//
+set directory=./.swap,~/.local/share/nvim/swap//
 if has('persistent_undo')
 	set undofile
 	set undodir=~/.local/share/nvim/undo//

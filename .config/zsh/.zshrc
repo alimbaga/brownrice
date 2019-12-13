@@ -1,5 +1,3 @@
-# Luke's config for the Zoomer Shell
-
 # Enable colors and change prompt:
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -63,19 +61,6 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 
-# This is a function that will be executed before every prompt
-precmd() {
-    local date_part="$(tail -1 $HOME/logs/zsh_history/history | cut -c 3-12)"
-    local fmt_date="$(date -d @${date_part} +'%Y-%m-%d %H:%M:%S')"
-    local command_part="$(tail -1 $HOME/logs/zsh_history/history  | cut -c 16-)"
-    if [ "$command_part" != "$PERSISTENT_HISTORY_LAST" ]
-    then
-        echo "${fmt_date} | ${command_part}"  >> \
-          ~/.logs/zsh-history/$(date "+%Y-%m-%d").log;
-        export PERSISTENT_HISTORY_LAST="$command_part"
-    fi
-}
-
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -83,6 +68,10 @@ bindkey '^e' edit-command-line
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+
+# FZF bindings and completion
+source /usr/share/fzf/key-bindings.zsh 2>/dev/null
+source /usr/share/fzf/completion.zsh 2>/dev/null
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

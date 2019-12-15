@@ -19,11 +19,7 @@ super + shift + a
 	$TERMINAL -e pulsemixer; pkill -RTMIN+10 i3blocks
 super + shift + c
 	camtoggle
-super + shift + e
-	tutorialvids
 super + w
-	webby | xargs -r $BROWSER
-super + shift + w
 	$BROWSER
 super + shift + g
 	gimp
@@ -108,9 +104,7 @@ super + {_,shift +} bracketleft
 	lmc back {10,120}
 
 # Function keys
-# Show readme
 super + F1
-#groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
 	sh ~/.local/bin/i3cmds/dmenupass
 
 # F2 is restart in i3 right now.

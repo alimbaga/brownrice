@@ -270,6 +270,16 @@ if has('persistent_undo')
 	set undodir=~/.local/share/nvim/undo//
 endif
 
+
+" -----------------------------------------------------------------------------
+" Colors and themes
+" -----------------------------------------------------------------------------
+set termguicolors
+set background=dark
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_transparent_background = 1
+colorscheme gruvbox-material
+
 " -----------------------------------------------------------------------------
 " Plugin settings, mappings, autocommands, and configs
 " -----------------------------------------------------------------------------
@@ -283,7 +293,7 @@ inoremap <silent><expr> <Tab>
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Goyo plugin makes text more readable when writing prose:
-noremap <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+noremap <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
 
 "=#=#=#=#= NERDTree =#=#=#=#="
 noremap <leader>n :NERDTreeToggle<CR>

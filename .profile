@@ -2,6 +2,7 @@
 # Profile file. Runs on login.
 
 # Adds `~/.local/bin/` and all subdirectories to $PATH
+export LANG=C # for some reason this fixes man page problems
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export EDITOR="nvim"
 export ZDOTDIR="$HOME/.config/zsh/"

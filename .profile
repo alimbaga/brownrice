@@ -11,8 +11,8 @@ export BROWSER="firefox"
 export READER="zathura"
 export FILE="vifm"
 
-export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export INPUTRC="$HOME/.config/inputrc"
 
 # less/man colors
 export LESS=-R

@@ -344,14 +344,25 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ":t"
-
+let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" unicode symbols
+" " unicode symbols
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_symbols.left_sep = '▶'
+" let g:airline_symbols.right_sep = '◀'
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
 
 " enable/disable ale integration
 let g:airline#extensions#ale#enabled = 1
@@ -387,3 +398,8 @@ noremap <leader>es :UltiSnipsEdit<CR>
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+
+call deoplete#custom#var('omni', 'input_patterns', {
+      \ 'tex': g:vimtex#re#deoplete
+      \})
+

@@ -29,9 +29,10 @@ signal=8
 #interval=20
 #signal=7
 
-[weather]
-interval=18000
-signal=5
+# [weather]
+# command=weather Calgary
+# interval=18000
+# signal=5
 
 #[mailbox]
 #label=📬
@@ -40,11 +41,11 @@ signal=5
 
 [memory]
 interval=30
-label=🧠
+label=
 
 [cpu]
 interval=15
-label=💻
+label=🌡
 
 [volume]
 interval=once
@@ -58,16 +59,11 @@ signal=10
 #interval=60
 #command=disk /home 🏠
 
-#[vpn]
-#label=🛡
-#comman=
-
 [battery]
 command=battery BAT0
 interval=5
 
 [clock]
-label=📅
 interval=30
 
 [internet]

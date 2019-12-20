@@ -4,11 +4,12 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 
 # History in cache directory:
 HISTSIZE=10000
-HISTFILE=$HOME/.log/zsh-history/history
-setopt append_history # append rather then overwrite
-setopt sharehistory
-setopt extended_history # save timestamp
-setopt inc_append_history # add history immediately after typing a command
+SAVEHIST=10000
+HISTFILE=$HOME/.logs/zsh-history/$(date "+%Y-%m-%d")
+# setopt append_history # append rather then overwrite
+# setopt sharehistory
+# setopt extended_history # save timestamp
+# setopt inc_append_history # add history immediately after typing a command
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -29,7 +30,8 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select {
+function zle-keymap-select
+{
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
     echo -ne '\e[1 q'
@@ -42,7 +44,8 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
-zle-line-init() {
+zle-line-init()
+{
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
     echo -ne "\e[5 q"
 }
@@ -52,16 +55,15 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+vicd()
+{
+    local dst="$(command vifm --choose-dir - "$@")"
+    if [ -z "$dst" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
     fi
+    cd "$dst"
 }
-bindkey -s '^o' 'lfcd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line

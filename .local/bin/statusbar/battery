@@ -14,19 +14,44 @@ esac
 capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
 status=$(cat /sys/class/power_supply/"$1"/status)
 
-if [ "$capacity" -ge 75 ]; then
-	color="#00ff00"
+battery_icon=" "
+
+if [ "$capacity" -eq 100 ]; then
+	color="#10ff00"
+elif [ "$capacity" -ge 90 ]; then
+	color="#40ff00"
+	[ "$status" = "Discharging" ] && battery_icon=" "
+elif [ "$capacity" -ge 80 ]; then
+	color="#80ff00"
+	[ "$status" = "Discharging" ] && battery_icon=" "
+elif [ "$capacity" -ge 70 ]; then
+	color="#c0ff00"
+	[ "$status" = "Discharging" ] && battery_icon=" "
+elif [ "$capacity" -ge 60 ]; then
+	color="#f0ff00"
+	[ "$status" = "Discharging" ] && battery_icon=" "
 elif [ "$capacity" -ge 50 ]; then
-	color="#ffffff"
-elif [ "$capacity" -ge 25 ]; then
 	color="#ffff00"
+	[ "$status" = "Discharging" ] && battery_icon=" "
+elif [ "$capacity" -ge 40 ]; then
+	color="#fff000"
+	[ "$status" = "Discharging" ] && battery_icon=" "
+elif [ "$capacity" -ge 30 ]; then
+	color="#ffc000"
+	[ "$status" = "Discharging" ] && battery_icon=" "
+elif [ "$capacity" -ge 20 ]; then
+	color="#ff8000"
+	[ "$status" = "Discharging" ] && battery_icon=" "
+elif [ "$capacity" -ge 10 ]; then
+	color="#ff4000"
+	[ "$status" = "Discharging" ] && battery_icon=" "
 else
-	color="#ff0000"
-	warn="❗"
+	color="#ff1000"
+	[ "$status" = "Discharging" ] && battery_icon=" "
 fi
 
-[ -z $warn ] && warn=" "
+[ "$status" = "Charging" ] && color="#00ff00" && battery_icon=" "
+[ "$status" = "Unknown" ] && battery_icon=" "
+[ "$status" = "Not Charging" ] && battery_icon="🛑 "
 
-[ "$status" = "Charging" ] && color="#ffffff"
-
-printf "<span color='%s'>%s%s%s</span>\n" "$color" "$(echo "$status" | sed -e "s/,//;s/Discharging/🔋/;s/Not Charging/🛑/;s/Charging/🔌/;s/Unknown/♻️/;s/Full/⚡/;s/ 0*/ /g;s/ :/ /g")" "$warn" "$(echo "$capacity" | sed -e 's/$/%/')"
+printf "<span color='%s'>%s%s</span>\n" "$color" "$battery_icon" "$(echo "$capacity" | sed -e 's/$/%/')"

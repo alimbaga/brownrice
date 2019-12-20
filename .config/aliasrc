@@ -28,11 +28,11 @@ alias ka="killall" \
 	lsp="pacman -Qett --color=always | less" \
 	ffmpeg="ffmpeg -hide_banner" \
 	vpn='nordvpn' \
-	pdf='zathura' \
 	topydo='cd ~/Documents/notes/todotxt/ && topydo' \
 	todo='cd ~/Documents/notes/todotxt/ && topydo'
 
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
-vf() { fzf | xargs -r -I % $EDITOR % ;}
+vf() { fzf | xargs -r -I % "$EDITOR" % ;}
+pdf() { [ -z "$1" ] && find ./*.pdf | fzf | xargs -r -I % "$READER" % ; [ -n "$1" ] && zathura "$1"; }

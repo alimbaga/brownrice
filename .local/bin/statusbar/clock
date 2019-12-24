@@ -1,24 +1,6 @@
 #!/usr/bin/env sh
 
-clock_logo=
-# there has to be a better of doing this with encodings instead of actual logo
-case $(date +"%r" | cut -c 1-2) in
-	"01")  clock_logo=🕐 ;;
-	"02")  clock_logo=🕑 ;;
-	"03")  clock_logo=🕒 ;;
-	"04")  clock_logo=🕓 ;;
-	"05")  clock_logo=🕔 ;;
-	"06")  clock_logo=🕕 ;;
-	"07")  clock_logo=🕖 ;;
-	"08")  clock_logo=🕗 ;;
-	"09")  clock_logo=🕘 ;;
-	"10")  clock_logo=🕙 ;;
-	"11")  clock_logo=🕚 ;;
-	"12")  clock_logo=🕛 ;;
-	*)		 clock_logo= ;;
-esac
-
-echo "$clock_logo $(date '+%Y %b %d (%a) %I:%M%p')"
+date '+%Y %b %d (%a) %I:%M%p'
 
 case $BLOCK_BUTTON in
 	1) pgrep -x dunst >/dev/null && notify-send "This Month" "$(cal --color=always | sed "s/..7m/<b><span color=\"red\">/;s/..27m/<\/span><\/b>/")" && notify-send "Appointments" "$(calcurse -D ~/.config/calcurse -d3)" ;;

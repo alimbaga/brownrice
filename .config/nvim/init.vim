@@ -69,6 +69,9 @@ Plug 'sirver/ultisnips'
 " Assuming fzf is already installed
 Plug 'junegunn/fzf.vim'
 
+" Theme
+Plug 'sainnhe/gruvbox-material'
+
 " necessary LaTEX plugin
 Plug 'lervag/vimtex'
 " Languages and file types.
@@ -139,6 +142,7 @@ set wildmenu
 set wildmode=full
 set wrap
 set timeoutlen=500
+set termguicolors
 set nocompatible
 
 nnoremap c "_c
@@ -274,7 +278,6 @@ endif
 " -----------------------------------------------------------------------------
 " Colors and themes
 " -----------------------------------------------------------------------------
-set termguicolors
 set background=dark
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_transparent_background = 1
@@ -324,7 +327,6 @@ autocmd FileType json set foldmethod=syntax
 
 
 "=#=#=#=#= Airline =#=#=#=#="
-
 "enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 1
@@ -348,12 +350,6 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" " unicode symbols
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.whitespace = 'Ξ'
-" let g:airline_symbols.left_sep = '▶'
-" let g:airline_symbols.right_sep = '◀'
 
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''

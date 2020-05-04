@@ -195,8 +195,12 @@ bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right 	move right
 
+# #---Change DPI for 1080p screen---# #
+#exec xrandr --dpi 120
+
 # #---Enable autolock---# #
 exec --no-startup-id xss-lock -- ~/.local/bin/i3cmds/lockscreen
 
 # #---Enable docking daemon---# #
 exec --no-startup-id dockd --daemon
+

@@ -25,9 +25,9 @@ label=📦
 interval=once
 signal=8
 
-#[torrent]
-#interval=20
-#signal=7
+# [torrent]
+# interval=20
+# signal=7
 
 # [weather]
 # command=weather Calgary
@@ -44,7 +44,7 @@ interval=30
 
 [cpu]
 interval=15
-label=🌡
+label=CPU:
 
 [volume]
 interval=once
@@ -52,11 +52,11 @@ signal=10
 
 #[disk]
 #interval=60
-#command=disk /
+#command=disk /mnt
 
 #[disk]
 #interval=60
-#command=disk /home 🏠
+#command=disk /home
 
 [battery]
 command=battery BAT0

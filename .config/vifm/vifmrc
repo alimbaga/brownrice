@@ -73,7 +73,7 @@ filextype *.svg inkscape %f 2>/dev/null &
 filextype *.xcf gimp %f 2>/dev/null &
 
 " " file types
-set classify='📁 :dir:/, :exe:, :reg:, :link:'
+set classify='📂:dir:/, :exe:, :reg:, :link:'
 " various file names
 set classify+=' ::../::, ::*.sh::, ::*.[hc]pp::, ::*.[hc]::, ::/^copying|license$/::, ::.git/,,*.git/::, ::*.epub,,*.fb2,,*.djvu::, ::*.pdf::, ::*.htm,,*.html,,**.[sx]html,,*.xml::'
 " archives

@@ -1,5 +1,16 @@
 #!/usr/bin/env sh
-case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
+DIR_LIST="$HOME/.config/imagedirs"
+save_to_dir()
+{
+	dir=$(cat $DIR_LIST | dmenu -i -p "Select image directory: ") || exit 1
+
+	default_name=$(date '+%y%m%d-%H%M-%S').png
+	name=$(echo "$default_name" | dmenu -i -p "Enter file name:") || exit 1
+	maim -s "$dir/$name"
+}
+
+case "$(printf "a selected area (custom dir)\\na selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
+	"a selected area (custom dir)") save_to_dir;;
 	"a selected area") maim -s pic-selected-"$(date '+%y%m%d-%H%M-%S').png" ;;
 	"current window") maim -i "$(xdotool getactivewindow)" pic-window-"$(date '+%y%m%d-%H%M-%S').png" ;;
 	"full screen") maim pic-full-"$(date '+%y%m%d-%H%M-%S').png" ;;

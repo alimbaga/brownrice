@@ -72,7 +72,7 @@ XF86MonBrightnessUp
 Print
 	maim ~/Images/scrnshot/pic-full-$(date '+%y%m%d-%H%M-%S').png
 # Pick screenshot type
-shift + Print
+shift + F10
 	maimpick
 # Record audio or video
 super + Print

@@ -1,5 +1,6 @@
 [Default Applications]
 x-scheme-handler/magnet=torrent.desktop;
+application/x-bittorrent=torrent.desktop;
 x-scheme-handler/mailto=mail.desktop;
 text/plain=text.desktop;
 text/x-shellscript=text.desktop;

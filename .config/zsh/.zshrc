@@ -5,11 +5,11 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=$HOME/.logs/zsh-history/$(date "+%Y-%m-%d")
-# setopt append_history # append rather then overwrite
-# setopt sharehistory
-# setopt extended_history # save timestamp
-# setopt inc_append_history # add history immediately after typing a command
+HISTFILE=$HOME/.cache/logs/zsh-history/$(date "+%Y-%m-%d")
+setopt append_history # append rather then overwrite
+setopt sharehistory
+setopt extended_history # save timestamp
+setopt inc_append_history # add history immediately after typing a command
 
 # Basic auto/tab complete:
 autoload -U compinit

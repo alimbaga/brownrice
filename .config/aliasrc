@@ -29,10 +29,18 @@ alias ka="killall" \
 	ffmpeg="ffmpeg -hide_banner" \
 	vpn='nordvpn' \
 	topydo='cd ~/Documents/notes/todotxt/ && topydo' \
-	todo='cd ~/Documents/notes/todotxt/ && topydo'
-
+	todo='cd ~/Documents/notes/todotxt/ && topydo'\
+	repos='cd ~/Documents/repos' \
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
+# open files with vim
 vf() { fzf | xargs -r -I % "$EDITOR" % ;}
-pdf() { [ -z "$1" ] && find ./*.pdf | fzf | xargs -r -I % "$READER" % ; [ -n "$1" ] && zathura "$1"; }
+
+# find and change directories
+fd() { cd $(find . -type d -printf '%d\t%P\n' | sort -r -nk1 | cut -f2- | fzf);}
+
+# read pdf and epub files
+# book() { [ -z "$1" ] && find . -name "*.pdf" -o -name "*.epub" -type f | fzf | xargs -r -I % "$READER" % ; [ -n "$1" ] && zathura "$1"; }
+
+# books() { cd "$HOME/Documents/books" && book;}

@@ -13,7 +13,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
-epxort FILE="vifm"
+export FILE="vifm"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"

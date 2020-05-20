@@ -2,7 +2,7 @@
 
 The main difference is that these dotfiles delete all the unnecessary config that is not part of dwm.
 
-- Very useful scripts are in `~/.local/bin/`
+- Very useful scripts are in `~/.local/bin/LARBS`
 - Settings for:
 	- vim/nvim (text editor)
 	- zsh (shell)

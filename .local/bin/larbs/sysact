@@ -10,10 +10,10 @@ esac
 
 cmds="\
  lock		slock
- exit		kill -TERM $(pidof -s dwm)
+ exit		kill -TERM $(pidof -s dwm)
  refresh dwm	kill -HUP $(pidof -s dwm)
-⏾ hibernate	${hib:-sudo -A systemctl suspend-then-hibernate}
-ﰇ reboot	${reb:-sudo -A reboot}
+ hibernate	${hib:-sudo -A systemctl suspend-then-hibernate}
+ reboot	${reb:-sudo -A reboot}
  shutdown	${shut:-sudo -A shutdown -h now}"
 
 choice="$(echo "$cmds" | cut -d'	' -f 1 | dmenu)" || exit 1

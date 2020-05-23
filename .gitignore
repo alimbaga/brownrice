@@ -28,6 +28,7 @@
 !.config/Xresources
 
 !.local/bin/LARBS/*
+!.local/bin/larbs/*
 !.local/share/applications/*
 !.config/alsa/*
 !.config/calcurse/*

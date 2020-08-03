@@ -54,5 +54,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 # Start graphical server on tty1 if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! ps -e | grep -qw Xorg && exec startx
 
+[ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
+
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.config}/ttymaps.kmap 2>/dev/null

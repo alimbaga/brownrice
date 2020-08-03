@@ -2,9 +2,9 @@
 # your system. By blacklisting everything and whitelisting the necessary files and directories for LARBS we keep git
 # from complaining about untracked files that we dont want to track.
 
-# blacklist everything in the home direcotry
+# blacklist everything in the home directory
 *
-
+!*/
 # start whitelisting all the necessary config files and directories
 !.gitignore
 !.gitmodules
@@ -26,24 +26,22 @@
 !.config/inputrc
 !.config/user-dirs.dirs
 !.config/Xresources
-
-!.local/bin/LARBS/*
-!.local/bin/larbs/*
-!.local/share/applications/*
-!.config/alsa/*
-!.config/calcurse/*
-!.config/dunst/*
-!.config/fontconfig/*
-!.config/gtk-2.0/*
-!.config/gtk-3.0/*
-!.config/mpd/*
-!.config/mpv/*
-!.config/ncmpcpp/*
-!.config/nvim/*
-!.config/sxiv/*
-!.config/vifm/*
-!.config/wal/*
-!.config/wget/*
-!.config/zathura/*
-!.config/zsh*
-!.config/tmux/*
+!.local/bin/larbs/**
+!.local/share/applications/**
+!.config/alsa/**
+!.config/calcurse/**
+!.config/dunst/**
+!.config/fontconfig/**
+!.config/gtk-2.0/**
+!.config/gtk-3.0/**
+!.config/mpd/**
+!.config/mpv/**
+!.config/ncmpcpp/**
+!.config/nvim/init.vim
+!.config/sxiv/**
+!.config/vifm/**
+!.config/wal/**
+!.config/wget/**
+!.config/zathura/**
+!.config/zsh**
+!.config/tmux/**
